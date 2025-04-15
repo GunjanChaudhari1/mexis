@@ -1,0 +1,38 @@
+{
+  "name": "Source",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Handler_Api.js",
+  "dependencies": {
+    "@google-cloud/aiplatform": "^2.3.0",
+    "@google-cloud/dialogflow": "^4.6.0",
+    "@google-cloud/storage": "^6.7.0",
+    "@google-cloud/translate": "^6.3.1",
+    "async": "^3.2.3",
+    "caller-id": "^0.1.0",
+    "chrome-aws-lambda": "^10.1.0",
+    "crypto-js": "^4.0.0",
+    "form-data": "^4.0.0",
+    "image-to-base64": "^2.2.0",
+    "jimp": "^0.16.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.3",
+    "moment-business-time": "^2.0.0",
+    "moment-timezone": "^0.5.35",
+    "node-fetch": "^3.2.6",
+    "redis": "4.0.0",
+    "request": "^2.88.2",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}

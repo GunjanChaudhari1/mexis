@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  CatalogueSyncDEV:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: Catalog_Sync.handler
+      Runtime: nodejs12.x
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 300
+      Role: 'arn:aws:iam::849440956586:role/iam_for_lambda_tf'
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-0d2795ce0337972c0
+          - sg-091cee805ebc7e076
+        SubnetIds:
+          - subnet-0019938d73294efa5
+          - subnet-0b7c2fa444a3e29a4
+      Environment:
+        Variables:
+          HOST_TARGET: STAGE
+          REDIS_CLUSTER_URL: 'redis://mxs-mxb-redis-dev.9eetbj.0001.apse1.cache.amazonaws.com:6379'

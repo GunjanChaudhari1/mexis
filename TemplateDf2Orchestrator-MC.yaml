@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  Df2OrchestratorMC:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: Orchestrator_Df.handler
+      Runtime: nodejs12.x
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 180
+      Role: 'arn:aws:iam::849440956586:role/iam_for_lambda_tf'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /Df2Orchestrator
+            Method: ANY
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-091cee805ebc7e076
+        SubnetIds:
+          - subnet-0019938d73294efa5
+          - subnet-0b7c2fa444a3e29a4
+      Environment:
+        Variables:
+          FALLBACK_MESSAGE: >-
+            I didn't quite get that. Would you mind selecting the number next to
+            your preferred choice?
+          HOST_TARGET: MC
+          PAYBILL_ENCRYPTION_KEY: 1Y6BV0s7m45Y0IU53M9GKtxGCHYh9NI5
+          REDIS_CLUSTER_URL: 'redis://mxs-mxb-redis-dev.9eetbj.0001.apse1.cache.amazonaws.com:6379'
+          S3_BUCKET: maxbot-orchestrator
+          TIMEOUT_RETRY_COUNT: '2'

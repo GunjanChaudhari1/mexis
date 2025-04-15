@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  Rc2OrchestratorDEV:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: Orchestrator_Rc.handler
+      Runtime: nodejs12.x
+      CodeUri: .
+      Description: ''
+      MemorySize: 10240
+      Timeout: 120
+      Role: 'arn:aws:iam::849440956586:role/iam_for_lambda_tf'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /Rc2Orchestrator
+            Method: POST
+        Api2:
+          Type: Api
+          Properties:
+            Path: /Rc2Orchestrator
+            Method: GET
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-091cee805ebc7e076
+        SubnetIds:
+          - subnet-0019938d73294efa5
+          - subnet-0b7c2fa444a3e29a4
+      Environment:
+        Variables:
+          HOST_TARGET: DEV
+          S3_BUCKET: maxbot-orchestrator
+          TIMEOUT_RETRY_COUNT: '2'
+          NODE_TLS_REJECT_UNAUTHORIZED: 0
+      Tags:
+        Name: 'MaxBot: Orchestrator-DEV'
